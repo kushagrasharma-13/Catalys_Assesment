@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Endpoints</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="text-center">Data Retrieval and Processing API</h3>
+            </div>
+            <div class="card-body">
+                <p class="lead">Welcome to the Data Retrieval and Processing API. Below are the available endpoints:</p>
+                <ul class="list-group">
+                    {% for name, url in endpoints.items() %}
+                        <li class="list-group-item">
+                            <strong>{{ name }}:</strong> <a href="{{ url }}">{{ url }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card-footer text-center">
+                <p>&copy; 2024 Data API</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

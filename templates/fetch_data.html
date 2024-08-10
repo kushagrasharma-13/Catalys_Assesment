@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="text-center">Fetch and Process Data</h3>
+            </div>
+            <div class="card-body">
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        <div class="alert alert-{{ messages[0][0] }}">
+                            {{ messages[0][1] }}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                
+                {% if processed %}
+                    <p class="lead">Processed Data with ID: {{ data_id }}</p>
+                    <pre>{{ data }}</pre>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Go Back</a>
+                {% else %}
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="data">Enter Data (in list, dict, or string format):</label>
+                            <textarea class="form-control" id="data" name="data" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="card-footer text-center">
+                <p>&copy; 2024 Data API</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
