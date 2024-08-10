@@ -1,6 +1,5 @@
 # Catalys_Assesment
 
-```markdown
 # Flask Data Retrieval and Processing API
 
 ## Overview
